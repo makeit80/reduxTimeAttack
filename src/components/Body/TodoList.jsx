@@ -25,7 +25,7 @@ function TodoList({ id, title, contents, isDone }) {
 
     return (
 
-        <StSection onClick={onClickNavigateHandler}>
+        <StSection>
             <div>
                 <span>Title : {title}</span>
                 <p>Contents : {contents}</p>
@@ -48,6 +48,15 @@ function TodoList({ id, title, contents, isDone }) {
                 >
                 X
                 </Stbutton>
+
+                <Stbutton
+                onClick={onClickNavigateHandler}
+                top={'80%'}
+                right={'89%'}
+                backgroundColor={'#686868333'}
+                >
+                    상세보기
+                </Stbutton>
             </div>
         </StSection>
 
@@ -69,6 +78,7 @@ const Stbutton = styled.button`
     right: ${(props) => props.right};
     border: none;
     background-color: ${(props) => props.backgroundColor};
+    width: 100px;
 `
 
 export default TodoList
