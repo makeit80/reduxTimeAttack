@@ -16,17 +16,38 @@ function InputTodo() {
         setForm({ ...form, [name]: value});
     }
 
+    function inputVaildationCheck () {
+        if (form.title === "") {
+            alert('제목을 입력해주세요')
+            return false;
+        } else if (form.title.length > 10) {
+            alert('10글자 내외로 작성해주세요')
+            return false;
+        } else if (form.contents === "") {
+            alert('내용을 입력해주세요')
+            return false;
+        } else if (form.contents.length > 40) {
+            alert('40자 이내로 작성해주세요')
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     function onSubmitHandler (e) {
         e.preventDefault();
-        const data = {
-            id: uuidv4(),
-            title: form.title,
-            contents: form.contents,
-            isDone: false,
+        if (inputVaildationCheck()) {
+            const data = {
+                id: uuidv4(),
+                title: form.title,
+                contents: form.contents,
+                isDone: false,
+            }
+            dispatch(addTodo(data))
+            setForm({title : '', contents: ''})
         }
-        dispatch(addTodo(data))
-        setForm({title : '', contents: ''})
-    }
+        }
+
 
   return (
     <StDiv>
